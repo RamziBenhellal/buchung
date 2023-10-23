@@ -1,6 +1,7 @@
 package com.buchung.serviceimplementation;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ public class ZweckServiceImpl implements ZweckService {
 	private final ZweckRepository zweckRepo;
 
 	@Override
-	public Zweck save(Zweck zweck) {
+	public Zweck addZweck(Zweck zweck) {
 		return zweckRepo.save(zweck);
 	}
 
@@ -26,10 +27,14 @@ public class ZweckServiceImpl implements ZweckService {
 	public List<Zweck> getAll() {
 		return zweckRepo.findAll();
 	}
+	
+	@Override
+	public Optional<Zweck> get(Integer id) {
+		return zweckRepo.findById(id);
+	}
 
 	@Override
-	public Zweck edit(Zweck zweck) {
-		// TODO Auto-generated method stub
+	public Zweck update(Integer id,Zweck updatedZweck) {
 		return null;
 	}
 
@@ -37,8 +42,6 @@ public class ZweckServiceImpl implements ZweckService {
 	public Zweck addTermin(Integer id,Termin termin) {
 		 Zweck zweck = zweckRepo.findById(id).get();
 		 zweck.getTermine().add(termin);
-		 
 		return zweckRepo.save(zweck);
 	}
-
 }
