@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.buchung.model.Termin;
 import com.buchung.model.Zweck;
 import com.buchung.service.ZweckService;
 

@@ -34,8 +34,7 @@ public class TerminServiceImpl implements TerminService {
 
 	@Override
 	public Optional<Termin> get(Integer id) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		return terminRepository.findById(id);
 	}
 
 }

@@ -1,7 +1,6 @@
 package com.buchung.model;
 
-import java.sql.Date;
-import java.sql.Time;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -12,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,6 +38,10 @@ public class Termin {
 	@ManyToOne
     @JoinColumn(name="zweckId", nullable=false)
     private Zweck zweck;
+	
+	@OneToOne
+	@JoinColumn(name="userId",nullable = true)
+	private User user;
 	
 
 	

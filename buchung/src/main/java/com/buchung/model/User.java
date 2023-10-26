@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,6 +32,10 @@ public class User {
 	
 	@Column(name="email")
 	private String email;
+	
+	@OneToOne
+	@JoinColumn(name="termin_nr",nullable = false)
+	private Termin termin;
 	
 	
 }
