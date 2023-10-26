@@ -2,6 +2,8 @@ package com.buchung.model;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,10 +30,10 @@ public class Termin {
 	private Integer terminNr;
 	
 	@Column(name="datum")
-	private Date datum;
+	private LocalDate datum;
 	
 	@Column(name="zeit")
-	private Time zeit;
+	private LocalTime zeit;
 	
 	@ManyToOne
     @JoinColumn(name="zweckId", nullable=false)

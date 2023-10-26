@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.buchung.model.Termin;
 import com.buchung.model.Zweck;
 import com.buchung.repository.ZweckRepository;
 import com.buchung.service.ZweckService;
@@ -38,10 +37,5 @@ public class ZweckServiceImpl implements ZweckService {
 		return null;
 	}
 
-	@Override
-	public Zweck addTermin(Integer id,Termin termin) {
-		 Zweck zweck = zweckRepo.findById(id).get();
-		 zweck.getTermine().add(termin);
-		return zweckRepo.save(zweck);
-	}
+	
 }

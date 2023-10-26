@@ -12,6 +12,5 @@ public interface ZweckService {
 	List<Zweck> getAll();
 	Optional<Zweck> get(Integer id);
 	Zweck update (Integer id,Zweck updatedZweck);
-	Zweck addTermin(Integer id,Termin termin);
 
 }

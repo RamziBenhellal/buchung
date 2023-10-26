@@ -18,15 +18,16 @@ import com.buchung.service.ZweckService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/zweck")
+@RequestMapping("buchung/zweck")
 @RequiredArgsConstructor
 public class ZweckController {
 	
 	private final ZweckService zweckService;
 	
-	@GetMapping
+	@GetMapping("index")
 	public ResponseEntity<List<Zweck>> index(){
 		List<Zweck> zwecke = zweckService.getAll();
+		System.out.println(zwecke.get(0));
 		return new ResponseEntity<>(zwecke,HttpStatus.OK);
 	}
 	
@@ -42,11 +43,7 @@ public class ZweckController {
 		return new ResponseEntity<>(newZweck,HttpStatus.CREATED);
 	}
 	
-	@PostMapping("/add_Termin/{id}")
-	public ResponseEntity<Zweck> add(@PathVariable Integer id,@RequestBody Termin termin ){
-		Zweck zweck = zweckService.addTermin(id, termin);
-		return new ResponseEntity<>(zweck,HttpStatus.CREATED);
-	}
+	
 	
 	
 	
