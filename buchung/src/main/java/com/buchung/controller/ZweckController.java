@@ -24,7 +24,7 @@ public class ZweckController {
 	
 	private final ZweckService zweckService;
 	
-	@CrossOrigin(origins = "http://localhost:3000/")
+	@CrossOrigin(origins = "*")
 	@GetMapping("index")
 	public ResponseEntity<List<Zweck>> index(){
 		List<Zweck> zwecke = zweckService.getAll();
@@ -32,12 +32,14 @@ public class ZweckController {
 		return new ResponseEntity<>(zwecke,HttpStatus.OK);
 	}
 	
+	@CrossOrigin(origins = "*")
 	@GetMapping("details/{id}")
 	public ResponseEntity<Zweck> details(@PathVariable("id")Integer id){
 		Zweck zweck = zweckService.get(id).get();
 		return new ResponseEntity<>(zweck,HttpStatus.OK);
 	}
 	
+	@CrossOrigin(origins = "*")
 	@PostMapping("/add")
 	public ResponseEntity<Zweck> add(@RequestBody Zweck zweck){
 		Zweck newZweck = zweckService.addZweck(zweck);
