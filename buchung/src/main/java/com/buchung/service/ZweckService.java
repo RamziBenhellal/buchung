@@ -11,5 +11,6 @@ public interface ZweckService {
 	List<Zweck> getAll();
 	Optional<Zweck> get(Integer id);
 	Zweck update (Integer id,Zweck updatedZweck);
+	void remove(Integer id);
 
 }

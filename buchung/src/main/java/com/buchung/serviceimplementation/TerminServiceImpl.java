@@ -37,4 +37,20 @@ public class TerminServiceImpl implements TerminService {
 		return terminRepository.findById(id);
 	}
 
+	@Override
+	public Termin update(Integer id, Termin updatedTermin) {
+		Termin termin = terminRepository.findById(id).get();
+		termin.setDatum(updatedTermin.getDatum());
+		termin.setZeit(updatedTermin.getZeit());
+		
+		return terminRepository.save(termin);
+	}
+
+	@Override
+	public Termin updateZweck(Integer id, Integer idZweck) {
+		Termin termin = terminRepository.findById(id).get();
+		termin.setZweck(zweckRepository.findById(idZweck).get());
+		return terminRepository.save(termin);
+	}
+
 }

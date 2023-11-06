@@ -34,7 +34,16 @@ public class ZweckServiceImpl implements ZweckService {
 
 	@Override
 	public Zweck update(Integer id,Zweck updatedZweck) {
-		return null;
+		Zweck zweck = zweckRepo.findById(id).get();
+		zweck.setName(updatedZweck.getName());
+		zweck.setBemerkung(updatedZweck.getBemerkung());
+		
+		return zweckRepo.save(zweck);
+	}
+
+	@Override
+	public void remove(Integer id) {
+		zweckRepo.deleteById(id);
 	}
 
 	

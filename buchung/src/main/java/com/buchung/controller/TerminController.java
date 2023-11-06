@@ -1,5 +1,6 @@
 package com.buchung.controller;
 
+
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,6 +44,20 @@ public class TerminController {
 	@PostMapping("add/{idZweck}")
 	public ResponseEntity<Termin> add(@PathVariable("idZweck")Integer id,@RequestBody Termin termin){
 		Termin newTermin = terminService.addTermin(id,termin);
+		return new ResponseEntity<>(newTermin,HttpStatus.CREATED);
+	}
+	
+	@CrossOrigin(origins = "*")
+	@PutMapping("edit/{id}")
+	public ResponseEntity<Termin> edit(@PathVariable("id")Integer id,@RequestBody Termin updatedTermin){
+		Termin newTermin = terminService.update(id, updatedTermin);
+		return new ResponseEntity<>(newTermin,HttpStatus.CREATED);
+	}
+	
+	@CrossOrigin(origins = "*")
+	@PutMapping("edit/{id}/{idZweck}")
+	public ResponseEntity<Termin> editZweck(@PathVariable("id")Integer id,@PathVariable("idZweck")Integer idZweck){
+		Termin newTermin = terminService.updateZweck(id,idZweck);
 		return new ResponseEntity<>(newTermin,HttpStatus.CREATED);
 	}
 }

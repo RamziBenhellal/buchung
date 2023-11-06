@@ -10,6 +10,8 @@ public interface TerminService {
 	Termin addTermin(Integer idZweck, Termin termin);
 	List<Termin> getAll();
 	Optional<Termin> get(Integer id);
+	Termin update(Integer id,Termin updatedTermin);
+	Termin updateZweck(Integer id,Integer idZweck);
 	
 	
 
