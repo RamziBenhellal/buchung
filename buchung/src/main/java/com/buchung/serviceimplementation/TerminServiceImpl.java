@@ -24,6 +24,7 @@ public class TerminServiceImpl implements TerminService {
 	public Termin addTermin(Integer idZweck, Termin termin) {
 		Zweck zweck = zweckRepository.findById(idZweck).get();
 		termin.setZweck(zweck);
+		termin.setStatus("nicht gebucht");
 		return terminRepository.save(termin);
 	}
 
@@ -52,5 +53,18 @@ public class TerminServiceImpl implements TerminService {
 		termin.setZweck(zweckRepository.findById(idZweck).get());
 		return terminRepository.save(termin);
 	}
+
+	@Override
+	public List<Termin> getAll(Integer zweckId) {
+		Zweck zweck = zweckRepository.findById(zweckId).get();
+		return terminRepository.findAllByZweckOrderByDatum(zweck);
+	}
+	
+	@Override
+	public List<Termin> getAllGoupBy(Integer zweckId) {
+		Zweck zweck = zweckRepository.findById(zweckId).get();
+		return terminRepository.findAllByZweckGroupByDatumZeit(zweck);
+	}
+	
 
 }

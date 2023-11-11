@@ -35,7 +35,7 @@ public class TerminController {
 	
 	@CrossOrigin(origins = "*")
 	@GetMapping("details/{id}") 
-	ResponseEntity<Termin> details(@PathVariable("id")Integer id){
+	public ResponseEntity<Termin> details(@PathVariable("id")Integer id){
 		Termin termin = terminService.get(id).get();
 		return new ResponseEntity<>(termin, HttpStatus.OK);
 	}
@@ -59,5 +59,12 @@ public class TerminController {
 	public ResponseEntity<Termin> editZweck(@PathVariable("id")Integer id,@PathVariable("idZweck")Integer idZweck){
 		Termin newTermin = terminService.updateZweck(id,idZweck);
 		return new ResponseEntity<>(newTermin,HttpStatus.CREATED);
+	}
+	
+	@CrossOrigin(origins ="*")
+	@GetMapping("terminszweck/{idZweck}")
+	public ResponseEntity<List<Termin>> terminsZweck(@PathVariable("idZweck") Integer idZweck){
+		List<Termin> termine = terminService.getAllGoupBy(idZweck);
+		return new ResponseEntity<>(termine,HttpStatus.OK);
 	}
 }

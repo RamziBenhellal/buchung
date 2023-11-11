@@ -7,7 +7,7 @@ import com.buchung.model.User;
 
 public interface UserService {
 	
-	User addUser(Integer idTermin,User user);
+	User addUser(User user,Integer idTermin);
 	List<User> getAll();
 	Optional<User> get(Integer id);
 

@@ -35,9 +35,13 @@ public class Termin {
 	@Column(name="zeit")
 	private LocalTime zeit;
 	
+	@Column(name="status")
+	private String status;
+	
 	@ManyToOne
     @JoinColumn(name="zweckId", nullable=false)
     private Zweck zweck;
+	
 	
 	@OneToOne
 	@JoinColumn(name="userId",nullable = true)

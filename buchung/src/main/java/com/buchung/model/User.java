@@ -1,5 +1,7 @@
 package com.buchung.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +31,9 @@ public class User {
 	
 	@Column(name="nachname")
 	private String nachname;
+	
+	@Column(name="geburtsdatum")
+	private LocalDate geburtsdatum;
 	
 	@Column(name="email")
 	private String email;

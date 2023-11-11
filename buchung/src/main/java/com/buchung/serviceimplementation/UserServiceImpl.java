@@ -21,13 +21,14 @@ public class UserServiceImpl implements UserService {
 	private final TerminRepository terminRepository;
 
 	@Override
-	public User addUser(Integer idTermin,User user) {
+	public User addUser(User user,Integer idTermin) {
 		Termin termin = terminRepository.findById(idTermin).get();
-		termin.setUser(user);
+//		termin.setUser(user);
 		user.setTermin(termin);
+		termin.setStatus("gebucht");
 		
-		terminRepository.save(termin);
-		return userRepository.save(user);
+		//terminRepository.save(termin);
+		return 	 userRepository.save(user);
 	}
 
 	@Override
@@ -37,7 +38,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Optional<User> get(Integer id) {
-		
 		return userRepository.findById(id);
 	}
 

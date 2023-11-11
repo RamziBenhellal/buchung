@@ -56,8 +56,8 @@ public class ZweckController {
 	
 	@CrossOrigin(origins = "*")
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> delete(@PathVariable("id")Integer id){
-		return new ResponseEntity<>(HttpStatus.OK);
+	public void delete(@PathVariable("id")Integer id){
+		zweckService.remove(id);
 	}
 	
 	
